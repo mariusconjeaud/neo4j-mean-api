@@ -8,7 +8,7 @@
       "methods": [
         "delete"
       ],
-      "route": "cats/{name:alpha}"
+      "route": "cat/{name:alpha}"
     },
     {
       "type": "http",
