@@ -48,6 +48,16 @@ stages:
         npm run test --if-present
       displayName: 'Prepare binaries'
       
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'testing/output/test-*.xml'
+
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Build.SourcesDirectory)/testing/output/coverage/cobertura-coverage.xml'
+        
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
