@@ -4,8 +4,16 @@
   "description": "",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "jest --coverage --coverageDirectory=testing/output/coverage"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "jasmine-reporters": "^2.3.2",
+    "jest": "^25.2.3"
+  },
+  "devDependencies": {},
+  "jest": {
+    "setupFilesAfterEnv": ["./testing/setup-jasmine-env.js"],
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"]
+  }
 }
