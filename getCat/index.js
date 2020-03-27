@@ -5,15 +5,14 @@ module.exports = async function (context, req) {
 
     if (name) {
         context.res = {
+            status: 200,
             body: { name: name }
         };
     }
     else {
         context.res = {
             status: 400,
-            body: "Please pass a name on the query string or in the request body"
+            body: "Please pass a name on the query string"
         };
     }
-
-    context.done();
 };

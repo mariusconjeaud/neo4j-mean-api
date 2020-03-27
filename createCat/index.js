@@ -3,7 +3,7 @@ module.exports = async function (context, req) {
 
     if (req.body) {
         context.res = {
-            status:201,
+            status: 201,
             body: `Created cat with name ${req.body.name}`
         };
     }
