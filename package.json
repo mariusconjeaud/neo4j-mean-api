@@ -14,6 +14,6 @@
   "jest": {
     "setupFilesAfterEnv": ["./testing/setup-jasmine-env.js"],
     "collectCoverage": true,
-    "coverageReporters": ["json", "html"]
+    "coverageReporters": ["text", "cobertura"]
   }
 }
