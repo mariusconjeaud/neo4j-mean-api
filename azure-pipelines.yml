@@ -49,7 +49,7 @@ stages:
       displayName: 'Prepare binaries'
       
     - task: PublishTestResults@2
-      condition: succeededOrFailes()
+      condition: succeededOrFailed()
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: 'testing/output/test-*.xml'
