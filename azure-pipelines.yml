@@ -49,15 +49,19 @@ stages:
       displayName: 'Prepare binaries'
       
     - task: PublishTestResults@2
+      condition: succeededOrFailes()
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: 'testing/output/test-*.xml'
+      displayName: 'Publish Test Results'
 
     - task: PublishCodeCoverageResults@1
+      condition: succeededOrFailed()
       inputs:
         codeCoverageTool: 'Cobertura'
         summaryFileLocation: '$(Build.SourcesDirectory)/testing/output/coverage/cobertura-coverage.xml'
-        
+      displayName: 'Publish Code Coverage Results'
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
