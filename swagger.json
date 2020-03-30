@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "neo4j-mean-api",
+    "version": "1.0",
+    "description": "Import from \"neo4j-mean-api\" Function App"
+  },
+  "host": "neo4j-mean-api-apim.azure-api.net",
+  "basePath": "/neo4j-mean-api",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/cat/{name}": {
+      "get": {
+        "operationId": "get-getcat",
+        "summary": "Returns cat with provided name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Missing required parameter (name)"
+          }
+        }
+      },
+      "put": {
+        "operationId": "put-updatecat",
+        "summary": "Updates cat with provided name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Missing required parameter (name)"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-deletecat",
+        "summary": "Deletes cat with provided name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Missing required parameter (name)"
+          }
+        }
+      }
+    },
+    "/cats": {
+      "get": {
+        "operationId": "get-getallcats",
+        "summary": "Returns all cats",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "produces": "text/plain"
+          }
+        }
+      },
+      "post": {
+        "operationId": "post-createcat",
+        "summary": "Creates cat with provided name",
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Missing required parameter (name)"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}
