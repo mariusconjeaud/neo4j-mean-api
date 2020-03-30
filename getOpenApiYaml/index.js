@@ -4,13 +4,13 @@ const fs = require('fs'),
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    var html = fs.readFileSync(path.join(__dirname, '../open-api-doc.html'), 'utf8');
+    var yaml = fs.readFileSync(path.join(__dirname, '../open-api-definition.yml'), 'utf8');
 
     context.res = {
         status: 200,
         headers: {
-            'Content-Type': 'text/html'
+            'Content-Type': 'text/yaml'
         },
-        body: html
+        body: yaml
     };
 };

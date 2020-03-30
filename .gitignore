@@ -95,3 +95,6 @@ bin
 obj
 appsettings.json
 local.settings.json
+
+# OpenApi artifacts
+*-documentation-generated
