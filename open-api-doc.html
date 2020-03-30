@@ -555,6 +555,9 @@
     color: #fff;
   }
   
+  
+  00427D
+  
   .sidenav > .active > a {
     position: relative;
     z-index: 2;
@@ -686,6 +689,20 @@
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+            defs.ArrayOfCats = {
+  "type" : "array",
+  "items" : {
+    "$ref" : "#/components/schemas/Cat"
+  }
+};
+            defs.Cat = {
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string"
+    }
+  }
+};
   </script>
 
   <div class="container-fluid">
@@ -743,7 +760,7 @@
                       <article id="api-Default-createCat-0" data-group="User" data-name="createCat" data-version="0">
                         <div class="pull-left">
                           <h1>createCat</h1>
-                          <p>Creates cat with provided name</p>
+                          <p>Creates cat provided in body</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -787,8 +804,11 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
+        Cat body = {
+  "name" : "Apollo"
+}; // Cat | Cat object
         try {
-            apiInstance.createCat();
+            apiInstance.createCat(body);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#createCat");
             e.printStackTrace();
@@ -804,8 +824,11 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        Cat body = {
+  "name" : "Apollo"
+}; // Cat | Cat object
         try {
-            apiInstance.createCat();
+            apiInstance.createCat(body);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#createCat");
             e.printStackTrace();
@@ -818,12 +841,15 @@ public class DefaultApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Default-createCat-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Cat *body = {
+  "name" : "Apollo"
+}; // Cat object
+
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Creates cat with provided name
-[apiInstance createCatWithCompletionHandler: 
-              ^(NSError* error) {
+// Creates cat provided in body
+[apiInstance createCatWith:body
+              completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -835,6 +861,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
+var body = {
+  "name" : "Apollo"
+}; // {{Cat}} Cat object
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -842,7 +872,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.createCat(callback);
+api.createCat(body, callback);
 </code></pre>
                             </div>
 
@@ -864,11 +894,12 @@ namespace Example
         {
 
             var apiInstance = new DefaultApi();
+            var body = new Cat(); // Cat | Cat object
 
             try
             {
-                // Creates cat with provided name
-                apiInstance.createCat();
+                // Creates cat provided in body
+                apiInstance.createCat(body);
             }
             catch (Exception e)
             {
@@ -885,9 +916,12 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
+$body = {
+  "name" : "Apollo"
+}; // Cat | Cat object
 
 try {
-    $api_instance->createCat();
+    $api_instance->createCat($body);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createCat: ', $e->getMessage(), PHP_EOL;
 }
@@ -900,9 +934,10 @@ use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $body = WWW::SwaggerClient::Object::Cat->new(); # Cat | Cat object
 
 eval { 
-    $api_instance->createCat();
+    $api_instance->createCat(body => $body);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->createCat: $@\n";
@@ -918,10 +953,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+body = {
+  "name" : "Apollo"
+} # Cat | Cat object
 
 try: 
-    # Creates cat with provided name
-    api_instance.create_cat()
+    # Creates cat provided in body
+    api_instance.create_cat(body)
 except ApiException as e:
     print("Exception when calling DefaultApi->createCat: %s\n" % e)</code></pre>
                             </div>
@@ -931,6 +969,53 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "description" : "Cat object",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Cat"
+      },
+      "example" : {
+        "name" : "Apollo"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_createCat_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_createCat_body"></div>
+                                </td>
+                                </tr>
+                            </table>
 
 
 
@@ -1253,7 +1338,8 @@ public class DefaultApiExample {
         
         DefaultApi apiInstance = new DefaultApi();
         try {
-            apiInstance.getAllCats();
+            ArrayOfCats result = apiInstance.getAllCats();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getAllCats");
             e.printStackTrace();
@@ -1270,7 +1356,8 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
         try {
-            apiInstance.getAllCats();
+            ArrayOfCats result = apiInstance.getAllCats();
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getAllCats");
             e.printStackTrace();
@@ -1288,7 +1375,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Returns all cats
 [apiInstance getAllCatsWithCompletionHandler: 
-              ^(NSError* error) {
+              ^(ArrayOfCats output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -1304,7 +1394,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.getAllCats(callback);
@@ -1333,7 +1423,8 @@ namespace Example
             try
             {
                 // Returns all cats
-                apiInstance.getAllCats();
+                ArrayOfCats result = apiInstance.getAllCats();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1352,7 +1443,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\ApiDefaultApi();
 
 try {
-    $api_instance->getAllCats();
+    $result = $api_instance->getAllCats();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getAllCats: ', $e->getMessage(), PHP_EOL;
 }
@@ -1367,7 +1459,8 @@ use WWW::SwaggerClient::DefaultApi;
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 
 eval { 
-    $api_instance->getAllCats();
+    my $result = $api_instance->getAllCats();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getAllCats: $@\n";
@@ -1386,7 +1479,8 @@ api_instance = swagger_client.DefaultApi()
 
 try: 
     # Returns all cats
-    api_instance.get_all_cats()
+    api_response = api_instance.get_all_cats()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->getAllCats: %s\n" % e)</code></pre>
                             </div>
@@ -1400,12 +1494,52 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - Success </h3>
+                            <h3> Status: 200 - A list of cats </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getAllCats-200-schema">Schema</a>
+                                </li>
+
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getAllCats-200-schema">
+                                  <div id='responses-getAllCats-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "A list of cats",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ArrayOfCats"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getAllCats-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAllCats-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getAllCats-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                         </article>
@@ -1461,7 +1595,8 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String name = name_example; // String | 
         try {
-            apiInstance.getCat(name);
+            Cat result = apiInstance.getCat(name);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getCat");
             e.printStackTrace();
@@ -1479,7 +1614,8 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String name = name_example; // String | 
         try {
-            apiInstance.getCat(name);
+            Cat result = apiInstance.getCat(name);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getCat");
             e.printStackTrace();
@@ -1498,7 +1634,10 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Returns cat with provided name
 [apiInstance getCatWith:name
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(Cat output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -1516,7 +1655,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.getCat(name, callback);
@@ -1546,7 +1685,8 @@ namespace Example
             try
             {
                 // Returns cat with provided name
-                apiInstance.getCat(name);
+                Cat result = apiInstance.getCat(name);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1566,7 +1706,8 @@ $api_instance = new Swagger\Client\ApiDefaultApi();
 $name = name_example; // String | 
 
 try {
-    $api_instance->getCat($name);
+    $result = $api_instance->getCat($name);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getCat: ', $e->getMessage(), PHP_EOL;
 }
@@ -1582,7 +1723,8 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $name = name_example; # String | 
 
 eval { 
-    $api_instance->getCat(name => $name);
+    my $result = $api_instance->getCat(name => $name);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getCat: $@\n";
@@ -1602,7 +1744,8 @@ name = name_example # String |
 
 try: 
     # Returns cat with provided name
-    api_instance.get_cat(name)
+    api_response = api_instance.get_cat(name)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->getCat: %s\n" % e)</code></pre>
                             </div>
@@ -1642,12 +1785,55 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - Success </h3>
+                            <h3> Status: 200 - Cat object </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getCat-200-schema">Schema</a>
+                                </li>
+
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getCat-200-schema">
+                                  <div id='responses-getCat-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Cat object",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Cat"
+      },
+      "example" : {
+        "name" : "Apollo"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getCat-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getCat-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getCat-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
 
                             <h3> Status: 400 - Missing required parameter (name) </h3>

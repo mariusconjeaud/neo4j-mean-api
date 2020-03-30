@@ -6,7 +6,7 @@ info:
 paths:
   '/cat/{name}':
     get:
-      operationId: get-getcat
+      operationId: getCat
       summary: Returns cat with provided name
       parameters:
         - name: name
@@ -16,11 +16,17 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
+          description: Cat object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+              example:
+                name: Apollo
         '400':
           description: Missing required parameter (name)
     put:
-      operationId: put-updatecat
+      operationId: updateCat
       summary: Updates cat with provided name
       parameters:
         - name: name
@@ -34,7 +40,7 @@ paths:
         '400':
           description: Missing required parameter (name)
     delete:
-      operationId: delete-deletecat
+      operationId: deleteCat
       summary: Deletes cat with provided name
       parameters:
         - name: name
@@ -49,14 +55,27 @@ paths:
           description: Missing required parameter (name)
   /cats:
     get:
-      operationId: get-getallcats
+      operationId: getAllCats
       summary: Returns all cats
       responses:
         '200':
-          description: Success
+          description: A list of cats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfCats'
     post:
-      operationId: post-createcat
-      summary: Creates cat with provided name
+      operationId: createCat
+      summary: Creates cat provided in body
+      requestBody:
+        description: Cat object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+            example:
+              name: Apollo
       responses:
         '201':
           description: Success
@@ -65,3 +84,14 @@ paths:
 tags: []
 servers:
   - url: 'https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api'
+components:
+  schemas:
+    Cat:
+      type: object
+      properties:
+        name:
+          type: string
+    ArrayOfCats:
+      type: array
+      items:
+        $ref: '#/components/schemas/Cat'
