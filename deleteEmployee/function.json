@@ -6,9 +6,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "post"
+        "delete"
       ],
-      "route": "cats"
+      "route": "employee/{emp_id:int}"
     },
     {
       "type": "http",

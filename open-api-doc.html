@@ -689,18 +689,65 @@
   <script>
     // Script section to load models into a JS Var
     var defs = {}
-            defs.ArrayOfCats = {
+            defs.ArrayOfLabels = {
   "type" : "array",
   "items" : {
-    "$ref" : "#/components/schemas/Cat"
+    "$ref" : "#/components/schemas/Label"
   }
 };
-            defs.Cat = {
+            defs.ArrayOfNodes = {
+  "type" : "array",
+  "items" : {
+    "$ref" : "#/components/schemas/Node"
+  }
+};
+            defs.Employee = {
   "type" : "object",
   "properties" : {
+    "emp_id" : {
+      "type" : "integer",
+      "example" : 1
+    },
     "name" : {
-      "type" : "string"
+      "type" : "string",
+      "example" : "George"
     }
+  }
+};
+            defs.Identity = {
+  "type" : "object",
+  "properties" : {
+    "low" : {
+      "type" : "integer"
+    },
+    "high" : {
+      "type" : "integer"
+    }
+  }
+};
+            defs.Label = {
+  "type" : "string",
+  "example" : "Employee"
+};
+            defs.Node = {
+  "type" : "object",
+  "properties" : {
+    "identity" : {
+      "$ref" : "#/components/schemas/Identity"
+    },
+    "labels" : {
+      "$ref" : "#/components/schemas/ArrayOfLabels"
+    },
+    "properties" : {
+      "$ref" : "#/components/schemas/NodeProperties"
+    }
+  }
+};
+            defs.NodeProperties = {
+  "type" : "object",
+  "example" : {
+    "name" : "George",
+    "emp_id" : "0001"
   }
 };
   </script>
@@ -720,20 +767,20 @@
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="createCat" class="">
-                      <a href="#api-Default-createCat">createCat</a>
+                    <li data-group="Default" data-name="createEmployee" class="">
+                      <a href="#api-Default-createEmployee">createEmployee</a>
                     </li>
-                    <li data-group="Default" data-name="deleteCat" class="">
-                      <a href="#api-Default-deleteCat">deleteCat</a>
+                    <li data-group="Default" data-name="deleteEmployee" class="">
+                      <a href="#api-Default-deleteEmployee">deleteEmployee</a>
                     </li>
-                    <li data-group="Default" data-name="getAllCats" class="">
-                      <a href="#api-Default-getAllCats">getAllCats</a>
+                    <li data-group="Default" data-name="getAllEmployees" class="">
+                      <a href="#api-Default-getAllEmployees">getAllEmployees</a>
                     </li>
-                    <li data-group="Default" data-name="getCat" class="">
-                      <a href="#api-Default-getCat">getCat</a>
+                    <li data-group="Default" data-name="getEmployee" class="">
+                      <a href="#api-Default-getEmployee">getEmployee</a>
                     </li>
-                    <li data-group="Default" data-name="updateCat" class="">
-                      <a href="#api-Default-updateCat">updateCat</a>
+                    <li data-group="Default" data-name="updateEmployee" class="">
+                      <a href="#api-Default-updateEmployee">updateEmployee</a>
                     </li>
           </ul>
         </nav>
@@ -756,11 +803,11 @@
         <div id="sections">
                 <section id="api-Default">
                   <h1>Default</h1>
-                    <div id="api-Default-createCat">
-                      <article id="api-Default-createCat-0" data-group="User" data-name="createCat" data-version="0">
+                    <div id="api-Default-createEmployee">
+                      <article id="api-Default-createEmployee-0" data-group="User" data-name="createEmployee" data-version="0">
                         <div class="pull-left">
-                          <h1>createCat</h1>
-                          <p>Creates cat provided in body</p>
+                          <h1>createEmployee</h1>
+                          <p>Creates Employee node provided in body</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -768,29 +815,29 @@
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/cats</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/employee</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-createCat-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-createCat-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-createCat-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-createCat-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-createCat-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-createCat-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-createEmployee-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-createEmployee-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-createEmployee-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-createEmployee-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-createEmployee-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-createEmployee-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-createCat-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/cats"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-createEmployee-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/employee"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-createCat-0-java">
+                          <div class="tab-pane" id="examples-Default-createEmployee-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -804,51 +851,45 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
-        Cat body = {
-  "name" : "Apollo"
-}; // Cat | Cat object
+        Employee body = ; // Employee | Employee object
         try {
-            apiInstance.createCat(body);
+            apiInstance.createEmployee(body);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#createCat");
+            System.err.println("Exception when calling DefaultApi#createEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-createCat-0-android">
+                          <div class="tab-pane" id="examples-Default-createEmployee-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        Cat body = {
-  "name" : "Apollo"
-}; // Cat | Cat object
+        Employee body = ; // Employee | Employee object
         try {
-            apiInstance.createCat(body);
+            apiInstance.createEmployee(body);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#createCat");
+            System.err.println("Exception when calling DefaultApi#createEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-createCat-0-groovy">
+  <div class="tab-pane" id="examples-Default-createEmployee-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-createCat-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Cat *body = {
-  "name" : "Apollo"
-}; // Cat object
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Employee *body = ; // Employee object
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Creates cat provided in body
-[apiInstance createCatWith:body
+// Creates Employee node provided in body
+[apiInstance createEmployeeWith:body
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -857,13 +898,11 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-createCat-0-javascript">
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
-var body = {
-  "name" : "Apollo"
-}; // {{Cat}} Cat object
+var body = ; // {{Employee}} Employee object
 
 var callback = function(error, data, response) {
   if (error) {
@@ -872,14 +911,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.createCat(body, callback);
+api.createEmployee(body, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-createCat-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-createEmployee-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-createCat-0-csharp">
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -888,22 +927,22 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class createCatExample
+    public class createEmployeeExample
     {
         public void main()
         {
 
             var apiInstance = new DefaultApi();
-            var body = new Cat(); // Cat | Cat object
+            var body = new Employee(); // Employee | Employee object
 
             try
             {
-                // Creates cat provided in body
-                apiInstance.createCat(body);
+                // Creates Employee node provided in body
+                apiInstance.createEmployee(body);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.createCat: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.createEmployee: " + e.Message );
             }
         }
     }
@@ -911,40 +950,38 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-createCat-0-php">
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
-$body = {
-  "name" : "Apollo"
-}; // Cat | Cat object
+$body = ; // Employee | Employee object
 
 try {
-    $api_instance->createCat($body);
+    $api_instance->createEmployee($body);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->createCat: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->createEmployee: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-createCat-0-perl">
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $body = WWW::SwaggerClient::Object::Cat->new(); # Cat | Cat object
+my $body = WWW::SwaggerClient::Object::Employee->new(); # Employee | Employee object
 
 eval { 
-    $api_instance->createCat(body => $body);
+    $api_instance->createEmployee(body => $body);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->createCat: $@\n";
+    warn "Exception when calling DefaultApi->createEmployee: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-createCat-0-python">
+                            <div class="tab-pane" id="examples-Default-createEmployee-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -953,15 +990,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-body = {
-  "name" : "Apollo"
-} # Cat | Cat object
+body =  # Employee | Employee object
 
 try: 
-    # Creates cat provided in body
-    api_instance.create_cat(body)
+    # Creates Employee node provided in body
+    api_instance.create_employee(body)
 except ApiException as e:
-    print("Exception when calling DefaultApi->createCat: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->createEmployee: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -982,14 +1017,11 @@ except ApiException as e:
                                 <script>
                                 $(document).ready(function() {
                                   var schemaWrapper = {
-  "description" : "Cat object",
+  "description" : "Employee object",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/Cat"
-      },
-      "example" : {
-        "name" : "Apollo"
+        "$ref" : "#/components/schemas/Employee"
       }
     }
   },
@@ -1007,12 +1039,12 @@ except ApiException as e:
                                   }
                                 
                                   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                  var result = $('#d2e199_createCat_body');
+                                  var result = $('#d2e199_createEmployee_body');
                                   result.empty();
                                   result.append(view.render());
                                 });
                                 </script>
-                                <div id="d2e199_createCat_body"></div>
+                                <div id="d2e199_createEmployee_body"></div>
                                 </td>
                                 </tr>
                             </table>
@@ -1028,7 +1060,7 @@ except ApiException as e:
                             <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
-                            <h3> Status: 400 - Missing required parameter (name) </h3>
+                            <h3> Status: 400 - Missing employee object </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -1039,11 +1071,11 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-deleteCat">
-                      <article id="api-Default-deleteCat-0" data-group="User" data-name="deleteCat" data-version="0">
+                    <div id="api-Default-deleteEmployee">
+                      <article id="api-Default-deleteEmployee-0" data-group="User" data-name="deleteEmployee" data-version="0">
                         <div class="pull-left">
-                          <h1>deleteCat</h1>
-                          <p>Deletes cat with provided name</p>
+                          <h1>deleteEmployee</h1>
+                          <p>Deletes employee with provided emp_id</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -1051,29 +1083,29 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/cat/{name}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/employee/{emp_id}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-deleteCat-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-deleteCat-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-deleteCat-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-deleteCat-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-deleteCat-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-deleteCat-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-deleteEmployee-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-deleteEmployee-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-deleteEmployee-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-deleteEmployee-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-deleteCat-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/cat/{name}"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-deleteEmployee-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/employee/{emp_id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-deleteCat-0-java">
+                          <div class="tab-pane" id="examples-Default-deleteEmployee-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1087,45 +1119,45 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Integer empId = 56; // Integer | 
         try {
-            apiInstance.deleteCat(name);
+            apiInstance.deleteEmployee(empId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#deleteCat");
+            System.err.println("Exception when calling DefaultApi#deleteEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-deleteCat-0-android">
+                          <div class="tab-pane" id="examples-Default-deleteEmployee-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Integer empId = 56; // Integer | 
         try {
-            apiInstance.deleteCat(name);
+            apiInstance.deleteEmployee(empId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#deleteCat");
+            System.err.println("Exception when calling DefaultApi#deleteEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-deleteCat-0-groovy">
+  <div class="tab-pane" id="examples-Default-deleteEmployee-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *name = name_example; // 
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *empId = 56; // 
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Deletes cat with provided name
-[apiInstance deleteCatWith:name
+// Deletes employee with provided emp_id
+[apiInstance deleteEmployeeWith:empId
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -1134,11 +1166,11 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-javascript">
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
-var name = name_example; // {{String}} 
+var empId = 56; // {{Integer}} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1147,14 +1179,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.deleteCat(name, callback);
+api.deleteEmployee(empId, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-deleteCat-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-deleteEmployee-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-csharp">
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1163,22 +1195,22 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class deleteCatExample
+    public class deleteEmployeeExample
     {
         public void main()
         {
 
             var apiInstance = new DefaultApi();
-            var name = name_example;  // String | 
+            var empId = 56;  // Integer | 
 
             try
             {
-                // Deletes cat with provided name
-                apiInstance.deleteCat(name);
+                // Deletes employee with provided emp_id
+                apiInstance.deleteEmployee(empId);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.deleteCat: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.deleteEmployee: " + e.Message );
             }
         }
     }
@@ -1186,38 +1218,38 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-php">
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
-$name = name_example; // String | 
+$empId = 56; // Integer | 
 
 try {
-    $api_instance->deleteCat($name);
+    $api_instance->deleteEmployee($empId);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->deleteCat: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->deleteEmployee: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-perl">
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $name = name_example; # String | 
+my $empId = 56; # Integer | 
 
 eval { 
-    $api_instance->deleteCat(name => $name);
+    $api_instance->deleteEmployee(empId => $empId);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->deleteCat: $@\n";
+    warn "Exception when calling DefaultApi->deleteEmployee: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-deleteCat-0-python">
+                            <div class="tab-pane" id="examples-Default-deleteEmployee-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1226,13 +1258,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-name = name_example # String | 
+empId = 56 # Integer | 
 
 try: 
-    # Deletes cat with provided name
-    api_instance.delete_cat(name)
+    # Deletes employee with provided emp_id
+    api_instance.delete_employee(empId)
 except ApiException as e:
-    print("Exception when calling DefaultApi->deleteCat: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->deleteEmployee: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1244,15 +1276,15 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">name*</td>
+                                  <tr><td style="width:150px;">emp_id*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_deleteCat_name">
+                                      <div id="d2e199_deleteEmployee_empId">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
-                                                      String
+                                                      Integer
                                                   </span>
                                   
                                               </div>
@@ -1278,7 +1310,7 @@ except ApiException as e:
                             <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
-                            <h3> Status: 400 - Missing required parameter (name) </h3>
+                            <h3> Status: 400 - Missing required parameter (emp_id) </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -1289,11 +1321,11 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-getAllCats">
-                      <article id="api-Default-getAllCats-0" data-group="User" data-name="getAllCats" data-version="0">
+                    <div id="api-Default-getAllEmployees">
+                      <article id="api-Default-getAllEmployees-0" data-group="User" data-name="getAllEmployees" data-version="0">
                         <div class="pull-left">
-                          <h1>getAllCats</h1>
-                          <p>Returns all cats</p>
+                          <h1>getAllEmployees</h1>
+                          <p>Returns all Employee nodes</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -1301,29 +1333,29 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/cats</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/employees</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getAllCats-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getAllCats-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getAllCats-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getAllCats-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getAllCats-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getAllCats-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-getAllEmployees-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getAllEmployees-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getAllEmployees-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getAllEmployees-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getAllCats-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/cats"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-getAllEmployees-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/employees"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-getAllCats-0-java">
+                          <div class="tab-pane" id="examples-Default-getAllEmployees-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1338,17 +1370,17 @@ public class DefaultApiExample {
         
         DefaultApi apiInstance = new DefaultApi();
         try {
-            ArrayOfCats result = apiInstance.getAllCats();
+            ArrayOfNodes result = apiInstance.getAllEmployees();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getAllCats");
+            System.err.println("Exception when calling DefaultApi#getAllEmployees");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-getAllCats-0-android">
+                          <div class="tab-pane" id="examples-Default-getAllEmployees-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -1356,26 +1388,26 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
         try {
-            ArrayOfCats result = apiInstance.getAllCats();
+            ArrayOfNodes result = apiInstance.getAllEmployees();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getAllCats");
+            System.err.println("Exception when calling DefaultApi#getAllEmployees");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-getAllCats-0-groovy">
+  <div class="tab-pane" id="examples-Default-getAllEmployees-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-objc">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Returns all cats
-[apiInstance getAllCatsWithCompletionHandler: 
-              ^(ArrayOfCats output, NSError* error) {
+// Returns all Employee nodes
+[apiInstance getAllEmployeesWithCompletionHandler: 
+              ^(ArrayOfNodes output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -1386,7 +1418,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-javascript">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
@@ -1397,14 +1429,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getAllCats(callback);
+api.getAllEmployees(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-getAllCats-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-getAllEmployees-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-csharp">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1413,7 +1445,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class getAllCatsExample
+    public class getAllEmployeesExample
     {
         public void main()
         {
@@ -1422,13 +1454,13 @@ namespace Example
 
             try
             {
-                // Returns all cats
-                ArrayOfCats result = apiInstance.getAllCats();
+                // Returns all Employee nodes
+                ArrayOfNodes result = apiInstance.getAllEmployees();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.getAllCats: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.getAllEmployees: " + e.Message );
             }
         }
     }
@@ -1436,22 +1468,22 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-php">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
 
 try {
-    $result = $api_instance->getAllCats();
+    $result = $api_instance->getAllEmployees();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getAllCats: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getAllEmployees: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-perl">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
@@ -1459,15 +1491,15 @@ use WWW::SwaggerClient::DefaultApi;
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 
 eval { 
-    my $result = $api_instance->getAllCats();
+    my $result = $api_instance->getAllEmployees();
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->getAllCats: $@\n";
+    warn "Exception when calling DefaultApi->getAllEmployees: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getAllCats-0-python">
+                            <div class="tab-pane" id="examples-Default-getAllEmployees-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1478,11 +1510,11 @@ from pprint import pprint
 api_instance = swagger_client.DefaultApi()
 
 try: 
-    # Returns all cats
-    api_response = api_instance.get_all_cats()
+    # Returns all Employee nodes
+    api_response = api_instance.get_all_employees()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->getAllCats: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->getAllEmployees: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1494,26 +1526,26 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - A list of cats </h3>
+                            <h3> Status: 200 - A list of Employee nodes </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-getAllCats-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-getAllEmployees-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-getAllCats-200-schema">
-                                  <div id='responses-getAllCats-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-getAllEmployees-200-schema">
+                                  <div id='responses-getAllEmployees-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "A list of cats",
+  "description" : "A list of Employee nodes",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ArrayOfCats"
+        "$ref" : "#/components/schemas/ArrayOfNodes"
       }
     }
   }
@@ -1531,25 +1563,25 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-getAllCats-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-getAllCats-200-schema-200');
+                                        $('#responses-getAllEmployees-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAllEmployees-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-getAllCats-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-getAllEmployees-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-getCat">
-                      <article id="api-Default-getCat-0" data-group="User" data-name="getCat" data-version="0">
+                    <div id="api-Default-getEmployee">
+                      <article id="api-Default-getEmployee-0" data-group="User" data-name="getEmployee" data-version="0">
                         <div class="pull-left">
-                          <h1>getCat</h1>
-                          <p>Returns cat with provided name</p>
+                          <h1>getEmployee</h1>
+                          <p>Returns employee with provided emp_id</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -1557,29 +1589,29 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/cat/{name}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/employee/{emp_id}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-getCat-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-getCat-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-getCat-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-getCat-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-getCat-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-getCat-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-getEmployee-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getEmployee-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getEmployee-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getEmployee-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getEmployee-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getEmployee-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-getCat-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/cat/{name}"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-getEmployee-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/employee/{emp_id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-getCat-0-java">
+                          <div class="tab-pane" id="examples-Default-getEmployee-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1593,48 +1625,48 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Integer empId = 56; // Integer | 
         try {
-            Cat result = apiInstance.getCat(name);
+            Node result = apiInstance.getEmployee(empId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getCat");
+            System.err.println("Exception when calling DefaultApi#getEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-getCat-0-android">
+                          <div class="tab-pane" id="examples-Default-getEmployee-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Integer empId = 56; // Integer | 
         try {
-            Cat result = apiInstance.getCat(name);
+            Node result = apiInstance.getEmployee(empId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#getCat");
+            System.err.println("Exception when calling DefaultApi#getEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-getCat-0-groovy">
+  <div class="tab-pane" id="examples-Default-getEmployee-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-getCat-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *name = name_example; // 
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *empId = 56; // 
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Returns cat with provided name
-[apiInstance getCatWith:name
-              completionHandler: ^(Cat output, NSError* error) {
+// Returns employee with provided emp_id
+[apiInstance getEmployeeWith:empId
+              completionHandler: ^(Node output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -1645,11 +1677,11 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getCat-0-javascript">
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
-var name = name_example; // {{String}} 
+var empId = 56; // {{Integer}} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1658,14 +1690,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getCat(name, callback);
+api.getEmployee(empId, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-getCat-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-getEmployee-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-getCat-0-csharp">
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1674,23 +1706,23 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class getCatExample
+    public class getEmployeeExample
     {
         public void main()
         {
 
             var apiInstance = new DefaultApi();
-            var name = name_example;  // String | 
+            var empId = 56;  // Integer | 
 
             try
             {
-                // Returns cat with provided name
-                Cat result = apiInstance.getCat(name);
+                // Returns employee with provided emp_id
+                Node result = apiInstance.getEmployee(empId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.getCat: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.getEmployee: " + e.Message );
             }
         }
     }
@@ -1698,40 +1730,40 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getCat-0-php">
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
-$name = name_example; // String | 
+$empId = 56; // Integer | 
 
 try {
-    $result = $api_instance->getCat($name);
+    $result = $api_instance->getEmployee($empId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getCat: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getEmployee: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getCat-0-perl">
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $name = name_example; # String | 
+my $empId = 56; # Integer | 
 
 eval { 
-    my $result = $api_instance->getCat(name => $name);
+    my $result = $api_instance->getEmployee(empId => $empId);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->getCat: $@\n";
+    warn "Exception when calling DefaultApi->getEmployee: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-getCat-0-python">
+                            <div class="tab-pane" id="examples-Default-getEmployee-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1740,14 +1772,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-name = name_example # String | 
+empId = 56 # Integer | 
 
 try: 
-    # Returns cat with provided name
-    api_response = api_instance.get_cat(name)
+    # Returns employee with provided emp_id
+    api_response = api_instance.get_employee(empId)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->getCat: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->getEmployee: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1759,15 +1791,15 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">name*</td>
+                                  <tr><td style="width:150px;">emp_id*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_getCat_name">
+                                      <div id="d2e199_getEmployee_empId">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
-                                                      String
+                                                      Integer
                                                   </span>
                                   
                                               </div>
@@ -1785,29 +1817,26 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - Cat object </h3>
+                            <h3> Status: 200 - Node object </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-getCat-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-getEmployee-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-getCat-200-schema">
-                                  <div id='responses-getCat-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-getEmployee-200-schema">
+                                  <div id='responses-getEmployee-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Cat object",
+  "description" : "Node object",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/Cat"
-      },
-      "example" : {
-        "name" : "Apollo"
+        "$ref" : "#/components/schemas/Node"
       }
     }
   }
@@ -1825,18 +1854,18 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-getCat-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-getCat-200-schema-200');
+                                        $('#responses-getEmployee-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEmployee-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-getCat-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-getEmployee-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
-                            <h3> Status: 400 - Missing required parameter (name) </h3>
+                            <h3> Status: 400 - Missing required parameter (emp_id) </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -1847,11 +1876,11 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-updateCat">
-                      <article id="api-Default-updateCat-0" data-group="User" data-name="updateCat" data-version="0">
+                    <div id="api-Default-updateEmployee">
+                      <article id="api-Default-updateEmployee-0" data-group="User" data-name="updateEmployee" data-version="0">
                         <div class="pull-left">
-                          <h1>updateCat</h1>
-                          <p>Updates cat with provided name</p>
+                          <h1>updateEmployee</h1>
+                          <p>Updates employee with provided emp_id</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -1859,29 +1888,29 @@ except ApiException as e:
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/cat/{name}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/employee/{emp_id}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-updateCat-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-updateCat-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-updateCat-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-updateCat-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-updateCat-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-updateCat-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-updateEmployee-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-updateEmployee-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-updateEmployee-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-updateEmployee-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-updateEmployee-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-updateEmployee-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-updateCat-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/cat/{name}"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-updateEmployee-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT "https://neo4j-mean-api-apim.azure-api.net/neo4j-mean-api/employee/{emp_id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-updateCat-0-java">
+                          <div class="tab-pane" id="examples-Default-updateEmployee-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -1895,45 +1924,49 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Employee body = ; // Employee | Employee object
+        Integer empId = 56; // Integer | 
         try {
-            apiInstance.updateCat(name);
+            apiInstance.updateEmployee(body, empId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#updateCat");
+            System.err.println("Exception when calling DefaultApi#updateEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-updateCat-0-android">
+                          <div class="tab-pane" id="examples-Default-updateEmployee-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String name = name_example; // String | 
+        Employee body = ; // Employee | Employee object
+        Integer empId = 56; // Integer | 
         try {
-            apiInstance.updateCat(name);
+            apiInstance.updateEmployee(body, empId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#updateCat");
+            System.err.println("Exception when calling DefaultApi#updateEmployee");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-updateCat-0-groovy">
+  <div class="tab-pane" id="examples-Default-updateEmployee-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-updateCat-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">String *name = name_example; // 
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Employee *body = ; // Employee object
+Integer *empId = 56; // 
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
-// Updates cat with provided name
-[apiInstance updateCatWith:name
+// Updates employee with provided emp_id
+[apiInstance updateEmployeeWith:body
+    empId:empId
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -1942,11 +1975,12 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-updateCat-0-javascript">
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Neo4jMeanApi = require('neo4j_mean_api');
 
 var api = new Neo4jMeanApi.DefaultApi()
-var name = name_example; // {{String}} 
+var body = ; // {{Employee}} Employee object
+var empId = 56; // {{Integer}} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1955,14 +1989,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.updateCat(name, callback);
+api.updateEmployee(bodyempId, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-updateCat-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-updateEmployee-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-updateCat-0-csharp">
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -1971,22 +2005,23 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class updateCatExample
+    public class updateEmployeeExample
     {
         public void main()
         {
 
             var apiInstance = new DefaultApi();
-            var name = name_example;  // String | 
+            var body = new Employee(); // Employee | Employee object
+            var empId = 56;  // Integer | 
 
             try
             {
-                // Updates cat with provided name
-                apiInstance.updateCat(name);
+                // Updates employee with provided emp_id
+                apiInstance.updateEmployee(body, empId);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.updateCat: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.updateEmployee: " + e.Message );
             }
         }
     }
@@ -1994,38 +2029,40 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-updateCat-0-php">
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\ApiDefaultApi();
-$name = name_example; // String | 
+$body = ; // Employee | Employee object
+$empId = 56; // Integer | 
 
 try {
-    $api_instance->updateCat($name);
+    $api_instance->updateEmployee($body, $empId);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->updateCat: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->updateEmployee: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-updateCat-0-perl">
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $name = name_example; # String | 
+my $body = WWW::SwaggerClient::Object::Employee->new(); # Employee | Employee object
+my $empId = 56; # Integer | 
 
 eval { 
-    $api_instance->updateCat(name => $name);
+    $api_instance->updateEmployee(body => $body, empId => $empId);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->updateCat: $@\n";
+    warn "Exception when calling DefaultApi->updateEmployee: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-updateCat-0-python">
+                            <div class="tab-pane" id="examples-Default-updateEmployee-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -2034,13 +2071,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-name = name_example # String | 
+body =  # Employee | Employee object
+empId = 56 # Integer | 
 
 try: 
-    # Updates cat with provided name
-    api_instance.update_cat(name)
+    # Updates employee with provided emp_id
+    api_instance.update_employee(body, empId)
 except ApiException as e:
-    print("Exception when calling DefaultApi->updateCat: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->updateEmployee: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -2052,15 +2090,15 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">name*</td>
+                                  <tr><td style="width:150px;">emp_id*</td>
                                   <td>
                                   
                                   
-                                      <div id="d2e199_updateCat_name">
+                                      <div id="d2e199_updateEmployee_empId">
                                           <div class="json-schema-view">
                                               <div class="primitive">
                                                   <span class="type">
-                                                      String
+                                                      Integer
                                                   </span>
                                   
                                               </div>
@@ -2074,6 +2112,50 @@ except ApiException as e:
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "description" : "Employee object",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Employee"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["application/json"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_updateEmployee_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_updateEmployee_body"></div>
+                                </td>
+                                </tr>
+                            </table>
 
 
 
@@ -2086,7 +2168,7 @@ except ApiException as e:
                             <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
-                            <h3> Status: 400 - Missing required parameter (name) </h3>
+                            <h3> Status: 400 - Missing required parameter (emp_id) </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>

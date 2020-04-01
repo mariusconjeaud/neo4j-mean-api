@@ -6,9 +6,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "delete"
+        "get"
       ],
-      "route": "cat/{name:alpha}"
+      "route": "employee/{emp_id:int}"
     },
     {
       "type": "http",

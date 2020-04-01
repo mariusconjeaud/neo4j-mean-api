@@ -8,7 +8,7 @@
       "methods": [
         "get"
       ],
-      "route": "cats"
+      "route": "employees"
     },
     {
       "type": "http",

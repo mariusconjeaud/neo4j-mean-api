@@ -6,9 +6,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "put"
+        "post"
       ],
-      "route": "cat/{name:alpha}"
+      "route": "employee"
     },
     {
       "type": "http",
