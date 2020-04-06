@@ -11,7 +11,7 @@ module.exports = async function (context, req) {
 
         try {
             await session.run(
-                'MATCH (e:Employee) WHERE e.emp_id=$emp_id DETACH DELETE e',
+                'MATCH (e:Employee) WHERE e.emp_id=toInteger($emp_id) DETACH DELETE e',
                 { emp_id: emp_id }
             );
             context.res = {
