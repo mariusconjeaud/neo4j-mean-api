@@ -7,7 +7,7 @@
     "test": "jest --coverage --coverageDirectory=testing/output/coverage"
   },
   "dependencies": {
-    "apollo-server-azure-functions": "^2.11.0",
+    "apollo-server-azure-functions": "^2.14.2",
     "jasmine-reporters": "^2.3.2",
     "jest": "^25.2.3",
     "neo4j-driver": "^4.0.2",
