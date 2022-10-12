@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "apollo-server-azure-functions": "^2.11.0",
-    "jasmine-reporters": "^2.3.2",
+    "jasmine-reporters": "^2.5.0",
     "jest": "^25.2.3",
     "neo4j-driver": "^4.0.2",
     "neo4j-graphql-js": "^2.13.0"
